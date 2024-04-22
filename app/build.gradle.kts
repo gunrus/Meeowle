@@ -124,7 +124,8 @@ dependencies {
     // Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.junit)
+    androidTestImplementation(libs.junit.ext.ktx)
+    androidTestImplementation(libs.uiautomator)
     androidTestImplementation(libs.compose.ui.test.junit)
-    androidTestImplementation(libs.junit.ext)
     androidTestImplementation(libs.espresso.core)
 }
