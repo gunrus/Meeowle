@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="main_t">#FFFFFF</color>
+    <color name="secondary_t">#FF000000</color>
+    <color name="text_color">#FFFFFFFF</color>
+    <color name="background">@android:color/background_dark</color>
+</resources>

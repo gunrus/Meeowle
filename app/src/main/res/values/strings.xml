@@ -1,0 +1,118 @@
+<resources>
+    <string name="app_name">Meowle</string>
+    <string name="search">Поиск</string>
+    <string name="rating">Рейтинг</string>
+    <string name="add_bottom_bar">Добавить</string>
+    <string name="favourites">Избранное</string>
+    <string name="settings">Настройки</string>
+    <string name="error_message">Имя должно быть на русском, не пустым, без цифр и пробелов</string>
+    <string name="find">Найти</string>
+    <string name="sort_by">Сортировка групп</string>
+    <string name="asc">По возрастанию</string>
+    <string name="desc">По убыванию</string>
+    <string name="gender">Пол</string>
+    <string name="gender_male">Муж.</string>
+    <string name="gender_female">Жен.</string>
+    <string name="gender_unisex">Универс.</string>
+    <string name="gender_all">Все</string>
+    <string name="empty_description">У этого кота нет описания</string>
+    <string name="no_cats_found">Упс! Ничего не нашли</string>
+    <string name="error_cat_content_description">Котик в шоке</string>
+    <string name="error_cat_details">Такого котика нет</string>
+
+    <string name="cat_paw_content_description">Лапка котика</string>
+    <string name="cat_gender_male_content_description">Мужской</string>
+    <string name="cat_gender_female_content_description">Женский</string>
+    <string name="cat_gender_unisex_content_description">Универсальный</string>
+
+    <string name="drop_down_menu_sort_title">Сортировка по</string>
+    <string name="drop_down_menu_sort_option_asc">Возрастанию</string>
+    <string name="drop_down_menu_sort_option_desc">Убыванию</string>
+    <string name="drop_down_menu_gender_title">Пол котика</string>
+    <string name="drop_down_menu_gender_option_male">Мужской</string>
+    <string name="drop_down_menu_gender_option_female">Женский</string>
+    <string name="drop_down_menu_gender_option_unisex">Универсальный</string>
+    <string name="drop_down_menu_gender_option_all">Все</string>
+    <string name="drop_down_menu_icon_content_description">Иконка выбранной опции</string>
+
+    <string name="search_title">Meowle</string>
+    <string name="search_text_placeholder">Поиск</string>
+    <string name="search_magnifying_glass_icon_content_description">Поиск</string>
+    <string name="search_tune_icon_content_description">Фильтр</string>
+    <string name="search_lets_find_description">Давай поищем\nкотиков...</string>
+    <string name="search_no_cats_found_description">Упс... Котик не найден</string>
+    <string name="search_bottom_sheet_title">Фильтррррр</string>
+    <string name="search_bottom_sheet_apply_button_title">Применить</string>
+
+    <string name="rating_title">Мяу рейтинг</string>
+    <string name="rating_tab_likes_title">Топ по лайкам</string>
+    <string name="rating_tab_dislikes_title">Топ по дизлайкам</string>
+
+    <string name="add_title">Добавить котика</string>
+    <string name="add_photo_content_description">Выберете фотографию котика</string>
+    <string name="add_name_placeholder">Введите имя котика</string>
+    <string name="add_gender_title">Выберите пол</string>
+    <string name="add_description_placeholder">Описание</string>
+    <string name="add_description_clear_content_description">Очистить</string>
+    <string name="add_button_title">Добавить</string>
+    <string name="add_snackbar_button_title">Ok</string>
+    <string name="add_snackbar_success_message">Котик добавлен</string>
+
+    <string name="details_title">Котодетали</string>
+    <string name="details_empty_description">У этого кота нет описания</string>
+    <string name="details_change_description_button">Изменить</string>
+    <string name="details_photos_title">Котопленка</string>
+    <string name="details_photos_empty_description">У котика пока нет фотографий</string>
+    <string name="details_fab_content_description">Добавить фотографию котика</string>
+    <string name="details_bottom_sheet_title">Описание котика</string>
+    <string name="details_bottom_sheet_hint">Поименять описание котика</string>
+    <string name="details_bottom_sheet_save_button">Сохранить</string>
+
+    <string name="add_cat">Дабавить кота в базу котиков</string>
+    <string name="enter_name">Введите имя</string>
+    <string name="enter_description">Введите описание кота</string>
+    <string name="add">Дабавить</string>
+    <string name="pick_photo">Выберете фотографию</string>
+    <string name="cat_added">Котик успешно добавлен!</string>
+    <string name="auth_title">Авторизация</string>
+    <string name="otp_title">Подтверждение</string>
+
+    <string name="favourites_title">Ваши любимые котики</string>
+    <string name="favourites_cat_photo_description">Фотография котика</string>
+    <string name="favourites_cats_empty_title">Котиков нет</string>
+    <string name="favourites_cats_empty_content_description">Котиков нет</string>
+
+    <string name="settings_title">Настройки</string>
+    <string name="settings_list_item_compose_headline">Декларативный UI</string>
+    <string name="settings_list_item_compose_supporting">Построение верстки через compose</string>
+    <string name="settings_list_item_inactive_headline">Переключатель</string>
+    <string name="settings_list_item_inactive_supporting">Заблокированный переключатель</string>
+    <string name="settings_list_item_name_headline">Ваше имя</string>
+    <string name="settings_list_item_name_content_description">Изменить имя</string>
+    <string name="settings_bottom_sheet_title">Ваше имя</string>
+    <string name="settings_bottom_sheet_hint">Введите ваше имя</string>
+    <string name="settings_bottom_sheet_save_button">Сохранить</string>
+    <string name="settings_logout_button">Выйти</string>
+
+    <string name="otp_label">Код отправлен на номер 79999999999</string>
+    <string name="phone_hint">Номер телефона</string>
+    <string name="name_hint">Имя</string>
+    <string name="search_hint">Введи имя котика</string>
+    <string name="gender_hint">Выбери котику пол</string>
+    <string name="desc_hint">Введи котику описание</string>
+    <string name="desc_title">Описание котика</string>
+    <string name="otp_hint">СМС-код</string>
+    <string name="btn_enter">Войти</string>
+    <string name="btn_search">Найти имя коту!</string>
+    <string name="btn_add">Добавить</string>
+    <string name="btn_edit">Изменить описание</string>
+    <string name="btn_save">Сохранить описание</string>
+    <string name="top_app_bar_navigate_back_content_description">Назад</string>
+    <string name="photo_content_description">Фотография котика</string>
+    <string name="btn_logout">Выйти из аккаунта</string>
+    <string name="btn_confirm_settings">Применить</string>
+    <string name="otp_enter">Отправить код</string>
+    <string name="hello">Привет, %s!</string>
+    <string name="icon_likes_content_description">Иконка лайков</string>
+    <string name="icon_dislikes_content_description">Иконка дизлайков</string>
+</resources>

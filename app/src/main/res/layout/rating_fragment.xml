@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tw_rating_title"
+        android:lines="1"
+        android:layout_marginHorizontal="@dimen/default_horizontal_margin"
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:layout_marginTop="15dp"
+        android:text="@string/rating_title"
+        android:textColor="@color/text_color"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/tab_layout"
+        />
+
+    <com.google.android.material.tabs.TabLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tw_rating_title"
+        android:id="@+id/tab_layout"
+        app:tabMode="fixed">
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/likes"
+            android:text="@string/rating_tab_likes_title"
+            />
+
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/dislikes"
+            android:text="@string/rating_tab_dislikes_title"
+            />
+
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_cats_list"
+        android:layout_width="0dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tab_layout"
+        tools:listitem="@layout/cat_rating_item"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

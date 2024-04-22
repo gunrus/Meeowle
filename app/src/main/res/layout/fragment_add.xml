@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginHorizontal="10dp"
+    android:layout_marginVertical="15dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tw_add_title"
+        android:lines="1"
+        android:layout_marginHorizontal="@dimen/default_horizontal_margin"
+        android:layout_marginVertical="25dp"
+
+        android:gravity="center"
+        android:textStyle="bold"
+        android:textSize="22sp"
+        android:text="@string/add_title"
+        android:textColor="@color/text_color"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/iw_add_cat_avatar"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="@dimen/default_horizontal_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tw_add_title"
+        app:layout_constraintBottom_toTopOf="@id/til_name"
+        android:scaleType="centerCrop"
+        app:shapeAppearanceOverlay="@style/circleImageView"
+        app:srcCompat="@drawable/ic_add_image"
+        />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/til_name"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
+        android:layout_marginHorizontal="@dimen/default_horizontal_margin"
+        android:layout_marginTop="@dimen/default_horizontal_margin"
+        app:errorEnabled="true"
+        app:layout_constraintTop_toBottomOf="@id/iw_add_cat_avatar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/et_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/search_hint"
+            android:maxLines="1"
+            android:inputType="text"
+            android:maxLength="11"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_gender"
+        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        app:layout_constraintTop_toBottomOf="@id/til_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginHorizontal="@dimen/default_horizontal_margin"
+        android:layout_height="wrap_content"
+        app:errorEnabled="true"
+        android:layout_width="0dp"
+        >
+
+        <AutoCompleteTextView
+            android:hint="@string/gender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/til_desc"
+        app:errorEnabled="true"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_marginHorizontal="@dimen/default_horizontal_margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/til_gender"
+        app:layout_constraintVertical_chainStyle="packed">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/cat_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/desc_title"
+            android:inputType="textMultiLine"
+            android:overScrollMode="ifContentScrolls"
+            android:layout_marginVertical="10dp"
+            android:maxLines="10"
+            android:textSize="17sp"
+            />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="@dimen/default_horizontal_margin"
+        android:id="@+id/btn_add"
+
+        app:layout_constraintTop_toBottomOf="@id/til_desc"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:text="@string/btn_add"
+        android:textAllCaps="false"
+        android:background="@drawable/button_drawable"
+        />
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

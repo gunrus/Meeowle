@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.Meowle" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
+
+    </style>
+
+<style name="circleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="MineCustomTabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">9sp</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textColor">@color/text_color</item>
+    </style>
+
+
+    <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
+        <item name="materialThemeOverlay">@style/ThemeOverlay.Material3.BottomNavigationView</item>
+    </style>
+
+    <style name="ThemeOverlay.Material3.BottomNavigationView" parent="">
+        <item name="colorPrimary">@color/background</item>
+        <item name="colorOnPrimary">@color/text_color</item>
+    </style>
+</resources>
