@@ -132,6 +132,7 @@ class CatDetailsViewModel @Inject constructor(
                         _catDetailsState.update {
                             it.copy(catPhotoUrls = result.data)
                         }
+                        updateCatInDatabase()
                     }
                 }
             }

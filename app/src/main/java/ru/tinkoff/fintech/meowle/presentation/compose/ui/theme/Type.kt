@@ -61,5 +61,12 @@ val Typography = Typography(
         fontSize = 16.sp,
         lineHeight = 18.sp,
         letterSpacing = 0.sp
+    ),
+    labelSmall = TextStyle(
+        fontFamily = tinkoffSansFontFamily,
+        fontWeight = FontWeight.Normal,
+        fontSize = 12.sp,
+        lineHeight = 16.sp,
+        letterSpacing = 0.sp
     )
 )

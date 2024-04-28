@@ -34,7 +34,7 @@ fun RatingTabs(
     onTabSelect: (Vote) -> Unit
 ) {
     SecondaryTabRow(
-        containerColor = MaterialTheme.colorScheme.surfaceVariant,
+        containerColor = MaterialTheme.colorScheme.surfaceDim,
         selectedTabIndex = selectedTab.toSelected(),
         modifier = modifier
             .dropShadow(

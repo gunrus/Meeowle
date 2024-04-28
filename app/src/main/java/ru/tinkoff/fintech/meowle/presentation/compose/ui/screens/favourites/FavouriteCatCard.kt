@@ -64,12 +64,12 @@ fun FavouriteCatCard(
                 .height(CAT_NAME_BOX_HEIGHT)
                 .width(CAT_NAME_BOX_WIDTH)
                 .clip(MaterialTheme.shapes.large)
-                .background(Color.White)
+                .background(MaterialTheme.colorScheme.primary)
         ) {
             Text(
                 text = favouriteCat.cat.name,
                 style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSecondary,
+                color = MaterialTheme.colorScheme.onPrimary,
                 textAlign = TextAlign.Center,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
@@ -83,7 +83,7 @@ fun FavouriteCatCard(
 }
 @Composable
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-fun NewCatCardPreview() {
+private fun NewCatCardDarkPreview() {
     val cat = Cat(
         id = 1,
         name = "МурзикМурзикМурзикМурзикМурзик",
@@ -103,3 +103,24 @@ fun NewCatCardPreview() {
     }
 }
 
+@Composable
+@Preview
+fun NewCatCardLightPreview() {
+    val cat = Cat(
+        id = 1,
+        name = "МурзикМурзикМурзикМурзикМурзик",
+        description = "AaaaaaaaaaaaAaaaaaaaaaaaAaaaaaaaaaaaAaaaaaaaaaaaAaaaaaaaaaaaAaaaaaaaaaaaAaaaaaaaaaaaAaaaaaaaaaaa",
+        gender = Gender.UNISEX,
+        likes = 100,
+        dislikes = 100,
+    )
+    val favouriteCat = FavouriteCat(
+        cat = cat,
+        catPhoto = null
+    )
+    MeowleTheme {
+        FavouriteCatCard(favouriteCat) {
+
+        }
+    }
+}

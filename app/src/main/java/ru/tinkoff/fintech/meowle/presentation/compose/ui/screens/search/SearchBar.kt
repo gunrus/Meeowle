@@ -66,7 +66,11 @@ fun SearchBar(
             focusedIndicatorColor = Color.Transparent,
             unfocusedIndicatorColor = Color.Transparent,
             disabledIndicatorColor = Color.Transparent,
-            errorIndicatorColor = Color.Transparent
+            errorIndicatorColor = Color.Transparent,
+            focusedContainerColor = MaterialTheme.colorScheme.surfaceBright,
+            disabledContainerColor = MaterialTheme.colorScheme.surfaceBright,
+            errorContainerColor = MaterialTheme.colorScheme.surfaceBright,
+            unfocusedContainerColor = MaterialTheme.colorScheme.surfaceBright,
         ),
         isError = isError,
         supportingText = {
@@ -101,7 +105,21 @@ fun SearchBar(
 
 @Composable
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-fun SearchPreview() {
+private fun SearchDarkPreview() {
+    MeowleTheme {
+        SearchBar(
+            searchText = "",
+            isError = false,
+            onSearch = {},
+            onSearchTextChange = {},
+            onFilter = {}
+        )
+    }
+}
+
+@Composable
+@Preview
+private fun SearchLightPreview() {
     MeowleTheme {
         SearchBar(
             searchText = "",

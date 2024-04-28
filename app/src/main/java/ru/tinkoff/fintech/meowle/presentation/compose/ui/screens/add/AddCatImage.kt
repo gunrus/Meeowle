@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
@@ -34,12 +35,13 @@ fun AddCatImage(
         modifier = modifier
             .size(124.dp)
             .clip(CircleShape)
-            .background(MaterialTheme.colorScheme.surfaceVariant)
+            .background(MaterialTheme.colorScheme.surfaceDim)
     ) {
         if (catImageUri == null) {
             Image(
                 imageVector = ImageVector.vectorResource(R.drawable.add_cat),
-                contentDescription = stringResource(R.string.add_photo_content_description)
+                contentDescription = stringResource(R.string.add_photo_content_description),
+                colorFilter = ColorFilter.tint(color = MaterialTheme.colorScheme.onSurface)
             )
         } else {
             LoadingCatPhoto(
@@ -51,7 +53,17 @@ fun AddCatImage(
 
 @Composable
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-private fun AddCatImagePreview() {
+private fun AddCatImageDarkPreview() {
+    MeowleTheme {
+        AddCatImage(
+            catImageUri = null
+        )
+    }
+}
+
+@Composable
+@Preview
+private fun AddCatImageLightPreview() {
     MeowleTheme {
         AddCatImage(
             catImageUri = null

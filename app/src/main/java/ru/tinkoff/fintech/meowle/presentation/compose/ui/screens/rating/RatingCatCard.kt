@@ -16,6 +16,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ThumbUp
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -23,7 +24,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.rotate
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -59,6 +62,9 @@ fun RatingCatCard(
     ) {
         Card(
             shape = MaterialTheme.shapes.medium,
+            colors = CardDefaults.cardColors(
+                containerColor = MaterialTheme.colorScheme.surfaceDim
+            ),
             modifier = Modifier
                 .fillMaxWidth()
                 .height(RATING_CAT_CARD_HEIGHT)
@@ -102,6 +108,7 @@ fun RatingCatCard(
                         style = MaterialTheme.typography.titleLarge,
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
+                        color = MaterialTheme.colorScheme.onSurface,
                         modifier = Modifier
                             .width(CAT_NAME_WIDTH)
                             .padding(start = MaterialTheme.spacing.medium)
@@ -131,20 +138,28 @@ fun RatingCatCard(
                     Icon(
                         imageVector = Icons.Default.ThumbUp,
                         contentDescription = "",
+                        tint = MaterialTheme.colorScheme.onSurface,
                         modifier = iconModifier
                             .padding(end = MaterialTheme.spacing.medium)
                             .size(ICON_SIZE)
                     )
                     Text(
                         text = votesCount.toString(),
-                        style = MaterialTheme.typography.titleMedium
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.onSurface,
                     )
                 }
             }
         }
         if (position in 1..3 && vote == Vote.LIKES) {
+            val crown = when (position) {
+                1 -> ImageVector.vectorResource(R.drawable.crown_gold)
+                2 -> ImageVector.vectorResource(R.drawable.crown_silver)
+                else -> ImageVector.vectorResource(R.drawable.crown_bronze)
+            }
+
             Image(
-                painter = painterResource(R.drawable.crown_gold),
+                imageVector = crown,
                 contentDescription = "",
                 modifier = Modifier
                     .align(Alignment.TopStart)

@@ -47,7 +47,7 @@ fun SearchBottomSheet(
     ModalBottomSheet(
         onDismissRequest = onClose,
         sheetState = state,
-        containerColor = MaterialTheme.colorScheme.surfaceVariant
+        containerColor = MaterialTheme.colorScheme.surfaceDim
     ) {
         SearchBottomSheetContent(
             searchOrder = searchOrder,
@@ -86,6 +86,7 @@ private fun SearchBottomSheetContent(
         Text(
             text = stringResource(R.string.search_bottom_sheet_title),
             style = MaterialTheme.typography.headlineLarge,
+            color = MaterialTheme.colorScheme.onSurface,
             modifier = Modifier
                 .padding(bottom = MaterialTheme.spacing.medium)
         )

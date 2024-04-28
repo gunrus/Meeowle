@@ -43,7 +43,7 @@ fun ContentPlaceholder(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
     ) {
-        val backgroundColor = MaterialTheme.colorScheme.surfaceVariant
+        val backgroundColor = MaterialTheme.colorScheme.surfaceBright
         Box(
             modifier = Modifier
                 .clip(CircleShape)
@@ -72,7 +72,8 @@ fun ContentPlaceholder(
                 Text(
                     text = title,
                     style = MaterialTheme.typography.titleLarge,
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             }
         }

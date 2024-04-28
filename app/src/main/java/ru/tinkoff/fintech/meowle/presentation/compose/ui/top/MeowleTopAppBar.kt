@@ -39,6 +39,7 @@ fun MeowleTopAppBar(
             Text(
                 text = stringResource(topAppBarDestination.title),
                 style = MaterialTheme.typography.headlineLarge,
+                color = MaterialTheme.colorScheme.onSurface
             )
         },
         navigationIcon = {

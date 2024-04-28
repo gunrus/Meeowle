@@ -79,6 +79,7 @@ fun CatDetailsScreen(
                             ActivityResultContracts.PickVisualMedia.SingleMimeType(mimeType))
                     )
                 },
+                containerColor = MaterialTheme.colorScheme.primary,
                 modifier = Modifier
                     .padding(MaterialTheme.spacing.large)
             ) {
@@ -88,7 +89,7 @@ fun CatDetailsScreen(
                 )
             }
         },
-        floatingActionButtonPosition = FabPosition.Center
+        floatingActionButtonPosition = FabPosition.End
     ) {
         CatDetailsContent(
             cat = cat,
@@ -148,6 +149,7 @@ fun CatDetailsContent(
             Text(
                 text = stringResource(R.string.details_photos_title),
                 style = MaterialTheme.typography.headlineLarge,
+                color = MaterialTheme.colorScheme.onSurface,
                 modifier = Modifier
                     .padding(
                         top = MaterialTheme.spacing.large,
@@ -158,11 +160,12 @@ fun CatDetailsContent(
 
         if (catDetails.catPhotoUrls.isEmpty()) {
             item(span = {
-                GridItemSpan(maxLineSpan / 2)
+                GridItemSpan(maxLineSpan)
             }) {
                 Text(
                     text = stringResource(R.string.details_photos_empty_description),
                     style = MaterialTheme.typography.bodyLarge,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
             }
         }
