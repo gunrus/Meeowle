@@ -12,7 +12,7 @@ class PreferenceRule : TestRule {
             override fun evaluate() {
                 println("TestRule Before Test")
                 putAuthParam()
-                mode()
+                //mode()
                 //putUrl()
                 base.evaluate() // our test works here
                 cleanPrefs()

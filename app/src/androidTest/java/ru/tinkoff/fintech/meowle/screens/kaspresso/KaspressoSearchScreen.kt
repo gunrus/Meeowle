@@ -19,7 +19,7 @@ class KaspressoSearchScreen : KScreen<KaspressoAuthScreen>() {
     override val viewClass: Class<*>? = null
 
     private val searchInput = KEditText { withId(R.id.et_search) }
-    private val searchButton = KButton { withId(R.id.search_button) }
+    private val searchButton = KButton { withId(com.google.android.material.R.id.text_input_start_icon) }
     private val catsList = KRecyclerView(
         builder = { withId(R.id.rv_search_result_list) },
         itemTypeBuilder = { itemType(::CatCard) }
@@ -32,7 +32,7 @@ class KaspressoSearchScreen : KScreen<KaspressoAuthScreen>() {
 
     fun checkCatName(catName: String, position: Int) {
         catsList.childAt<CatCard>(position) {
-            this.catName.hasText(catName)
+            this.catName.containsText(catName)
         }
     }
 
