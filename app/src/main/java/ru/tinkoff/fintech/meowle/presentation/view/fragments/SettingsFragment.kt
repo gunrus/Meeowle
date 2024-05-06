@@ -48,10 +48,8 @@ class SettingsFragment  : Fragment() {
                 }
             }
         }
-
         viewLifecycleOwner.lifecycleScope.launch {
             viewModel.logout.collectLatest {
-                Log.i("Auth", "Logout success")
                 launchAuthActivity(requireContext())
             }
         }

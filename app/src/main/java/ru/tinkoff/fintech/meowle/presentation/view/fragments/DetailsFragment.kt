@@ -14,6 +14,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.activity.OnBackPressedCallback
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -130,7 +131,17 @@ class DetailsFragment : Fragment() {
         super.onAttach(context)
         fragmentCloseListener = context as FragmentOnNavigationClose
         registerPhotoPicker()
+
+        val callback: OnBackPressedCallback = object :
+            OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                fragmentCloseListener.onClosePressed()
+            }
+        }
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+
     }
+
 
 
     fun registerPhotoPicker() {
