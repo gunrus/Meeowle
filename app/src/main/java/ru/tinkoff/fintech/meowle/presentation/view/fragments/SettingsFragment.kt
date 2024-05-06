@@ -16,6 +16,8 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.textfield.TextInputLayout
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import ru.tinkoff.fintech.meowle.R
@@ -28,7 +30,7 @@ import ru.tinkoff.fintech.meowle.presentation.shared.settings.launchMainActivity
 class SettingsFragment  : Fragment() {
 
     private val viewModel: SettingsViewModel by viewModels()
-
+    private lateinit var dialog : BottomSheetDialog
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -55,17 +57,27 @@ class SettingsFragment  : Fragment() {
         }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            viewModel.bottomSheetState.collectLatest {
-                if (it.isShown)
-                    showBottomSheet()
+            viewModel.state.collectLatest {
+                binding.twDescName.text = it.name
             }
         }
+
+        viewLifecycleOwner.lifecycleScope.launch {
+            viewModel.bottomSheetState.collectLatest {
+                if (it.isShown)
+                    if (!dialog.isShowing)
+                        showBottomSheet()
+                else
+                    dialog.dismiss()
+            }
+        }
+        dialog = BottomSheetDialog(requireContext())
+
         return binding.root
     }
 
     private fun showBottomSheet() {
-        val dialog = BottomSheetDialog(requireContext())
-
+        dialog = BottomSheetDialog(requireContext())
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         val bottomSheet = layoutInflater.inflate(R.layout.change_name_bottomsheet_dialog, null)
 
@@ -77,11 +89,9 @@ class SettingsFragment  : Fragment() {
             viewModel.onUserNameChanged(til_name.editText?.text.toString())
             viewModel.onSaveUserName()
             dialog.dismiss()
-            viewModel.onCloseBottomSheet()
-
         }
 
-        dialog.setOnCancelListener {
+        dialog.setOnDismissListener {
             viewModel.onCloseBottomSheet()
         }
 

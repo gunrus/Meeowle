@@ -12,6 +12,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.AutoCompleteTextView
 import android.widget.Button
@@ -158,9 +159,13 @@ class SearchFragment : Fragment() {
         til_search.setEndIconOnClickListener {
             showBottomSheet()
         }
-        til_search.setStartIconOnClickListener {
-            hideKeyboard()
-            searchViewModel.onSearch()
+
+        til_search.editText?.setOnEditorActionListener { _, actionId, _ ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                hideKeyboard()
+                searchViewModel.onSearch()
+            }
+            true
         }
 
     }
@@ -216,6 +221,7 @@ class SearchFragment : Fragment() {
         }
 
         bottomSheet.findViewById<Button>(R.id.confirm_button).setOnClickListener {
+            searchViewModel.onSearch()
             dialog.dismiss()
         }
 

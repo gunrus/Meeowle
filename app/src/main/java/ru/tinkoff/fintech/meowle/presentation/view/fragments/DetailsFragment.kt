@@ -29,6 +29,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.appbar.MaterialToolbar
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.textfield.MaterialAutoCompleteTextView
@@ -56,6 +58,8 @@ class DetailsFragment : Fragment() {
     private val detailsViewModel: CatDetailsViewModel by viewModels()
     private lateinit var pickMedia : ActivityResultLauncher<PickVisualMediaRequest>
 
+    private lateinit var fragmentCloseListener : FragmentOnNavigationClose
+
     lateinit var iw_Avatar : ImageView
     lateinit var tw_Name : TextView
     lateinit var iw_Gender : ImageView
@@ -69,6 +73,7 @@ class DetailsFragment : Fragment() {
     lateinit var ib_favorite : ImageButton
     lateinit var rv_photos  : RecyclerView
     lateinit var fab_add_photo  : FloatingActionButton
+    lateinit var appBar  : MaterialToolbar
     private var currentVote : Int = 0
     private lateinit var adapter : PhotoListAdapter
 
@@ -123,8 +128,10 @@ class DetailsFragment : Fragment() {
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
+        fragmentCloseListener = context as FragmentOnNavigationClose
         registerPhotoPicker()
     }
+
 
     fun registerPhotoPicker() {
         pickMedia = registerForActivityResult(ActivityResultContracts.PickVisualMedia()) { uri ->
@@ -178,10 +185,15 @@ class DetailsFragment : Fragment() {
             btn_edit = view.findViewById(R.id.btn_edit)
             ib_favorite = view.findViewById(R.id.ib_favorite)
             fab_add_photo = view.findViewById(R.id.add_photo)
+            appBar = view.findViewById(R.id.topAppBar)
 
             rv_photos.layoutManager = GridLayoutManager(context, 2, RecyclerView.VERTICAL, false)
             adapter = PhotoListAdapter()
             rv_photos.adapter = adapter
+
+            appBar.setNavigationOnClickListener {
+                fragmentCloseListener.onClosePressed()
+            }
 
             fab_add_photo.setOnClickListener {
                 openPhotoPicker()
