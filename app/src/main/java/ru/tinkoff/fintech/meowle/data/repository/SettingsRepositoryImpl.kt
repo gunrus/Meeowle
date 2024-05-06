@@ -33,8 +33,8 @@ class SettingsRepositoryImpl @Inject constructor(@ApplicationContext context: Co
         setString("launch_mode", mode.name)
     }
 
-    override suspend fun getBaseUrl(): String {
-        return getString("url") ?: "https://meowle.fintech-qa.ru"
+    override fun getBaseUrl(): String? {
+        return getString("url")
     }
 
     private fun getString(paramName: String): String? {

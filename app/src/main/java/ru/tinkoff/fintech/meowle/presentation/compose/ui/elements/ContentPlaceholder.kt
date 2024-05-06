@@ -16,6 +16,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -43,7 +44,7 @@ fun ContentPlaceholder(
         horizontalAlignment = Alignment.CenterHorizontally,
         modifier = modifier
     ) {
-        val backgroundColor = MaterialTheme.colorScheme.surfaceVariant
+        val backgroundColor = MaterialTheme.colorScheme.surfaceBright
         Box(
             modifier = Modifier
                 .clip(CircleShape)
@@ -72,7 +73,8 @@ fun ContentPlaceholder(
                 Text(
                     text = title,
                     style = MaterialTheme.typography.titleLarge,
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.onSurface
                 )
             }
         }

@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -35,18 +36,19 @@ private val CARD_HEIGHT = 180.dp
  */
 @Composable
 fun FavouriteCatCard(
+    modifier: Modifier = Modifier,
     favouriteCat: FavouriteCat,
     onCatClicked: (Cat) -> Unit
 ) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .width(CARD_HEIGHT)
             .height(CARD_HEIGHT + CAT_NAME_BOX_HEIGHT / 2)
             .clickable {
                 onCatClicked(favouriteCat.cat)
             }
+            .testTag("favouriteCatCard")
     ) {
-        //this.constraints
         Card(
             shape = MaterialTheme.shapes.large,
             modifier = Modifier
@@ -64,18 +66,19 @@ fun FavouriteCatCard(
                 .height(CAT_NAME_BOX_HEIGHT)
                 .width(CAT_NAME_BOX_WIDTH)
                 .clip(MaterialTheme.shapes.large)
-                .background(Color.White)
+                .background(MaterialTheme.colorScheme.primary)
         ) {
             Text(
                 text = favouriteCat.cat.name,
                 style = MaterialTheme.typography.bodySmall,
-                color = MaterialTheme.colorScheme.onSecondary,
+                color = MaterialTheme.colorScheme.onPrimary,
                 textAlign = TextAlign.Center,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
                 modifier = Modifier
                     .width(CAT_NAME_TEXT_WIDTH)
                     .align(Alignment.Center)
+                    .testTag("favouriteCatName")
             )
         }
     }
@@ -83,7 +86,7 @@ fun FavouriteCatCard(
 }
 @Composable
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-fun NewCatCardPreview() {
+private fun NewCatCardDarkPreview() {
     val cat = Cat(
         id = 1,
         name = "МурзикМурзикМурзикМурзикМурзик",
@@ -97,9 +100,30 @@ fun NewCatCardPreview() {
         catPhoto = null
     )
     MeowleTheme {
-        FavouriteCatCard(favouriteCat) {
+        FavouriteCatCard(favouriteCat = favouriteCat) {
 
         }
     }
 }
 
+@Composable
+@Preview
+fun NewCatCardLightPreview() {
+    val cat = Cat(
+        id = 1,
+        name = "МурзикМурзикМурзикМурзикМурзик",
+        description = "AaaaaaaaaaaaAaaaaaaaaaaaAaaaaaaaaaaaAaaaaaaaaaaaAaaaaaaaaaaaAaaaaaaaaaaaAaaaaaaaaaaaAaaaaaaaaaaa",
+        gender = Gender.UNISEX,
+        likes = 100,
+        dislikes = 100,
+    )
+    val favouriteCat = FavouriteCat(
+        cat = cat,
+        catPhoto = null
+    )
+    MeowleTheme {
+        FavouriteCatCard(favouriteCat = favouriteCat) {
+
+        }
+    }
+}

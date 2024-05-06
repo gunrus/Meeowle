@@ -36,7 +36,16 @@ class CatDetailsViewModel @Inject constructor(
     val bottomSheetState = _bottomSheetState.asStateFlow()
 
     fun updateCat(cat: Cat) {
-        _cat.update { cat }
+        viewModelScope.launch(Dispatchers.IO) {
+            when (val result = catsRepository.getCatById(cat.id)) {
+                is MeowleResult.Error -> {
+                    _cat.update { cat }
+                }
+                is MeowleResult.Success -> {
+                    _cat.update { result.data }
+                }
+            }
+        }
     }
 
     fun loadCatDetails(cat: Cat) {
@@ -132,6 +141,7 @@ class CatDetailsViewModel @Inject constructor(
                         _catDetailsState.update {
                             it.copy(catPhotoUrls = result.data)
                         }
+                        updateCatInDatabase()
                     }
                 }
             }

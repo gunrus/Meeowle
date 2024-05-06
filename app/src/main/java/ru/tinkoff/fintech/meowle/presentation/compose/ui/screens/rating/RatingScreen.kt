@@ -23,6 +23,7 @@ import ru.tinkoff.fintech.meowle.domain.cat.Cat
 import ru.tinkoff.fintech.meowle.domain.cat.Gender
 import ru.tinkoff.fintech.meowle.domain.cat.Vote
 import ru.tinkoff.fintech.meowle.presentation.compose.ui.elements.PawBox
+import ru.tinkoff.fintech.meowle.presentation.compose.ui.lazyListItemPosition
 import ru.tinkoff.fintech.meowle.presentation.compose.ui.theme.MeowleTheme
 import ru.tinkoff.fintech.meowle.presentation.compose.ui.theme.spacing
 import ru.tinkoff.fintech.meowle.presentation.shared.rating.RatingViewModel
@@ -80,7 +81,9 @@ private fun RatingScreenContent(
                         cat = cat,
                         position = index + 1,
                         vote = selectedTab,
-                        onCatClicked = onCatClick
+                        onCatClicked = onCatClick,
+                        modifier = Modifier
+                            .lazyListItemPosition(index)
                     )
                 }
             }

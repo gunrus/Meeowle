@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas .android.com/apk/res-auto"
+    android:id="@+id/bottom_sheet"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    app:behavior_hideable="false"
+    app:behavior_peekHeight="90dp"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
+
+    <View
+        android:layout_width="60dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center"
+        android:background="@color/dialog_line_color"
+        android:layout_marginVertical="@dimen/default_margin"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/details_bottom_sheet_title"
+        android:layout_gravity="center"
+        android:textSize="@dimen/text_size_name"
+        android:textStyle="bold"
+        android:textColor="@color/text_color"
+        android:layout_marginBottom="@dimen/default_margin"
+
+        />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/til_desc"
+        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox"
+        app:layout_constraintTop_toBottomOf="@id/til_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_chainStyle="packed"
+        android:layout_marginHorizontal="@dimen/default_horizontal_margin"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        >
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:hint="@string/details_bottom_sheet_hint"
+            android:layout_width="match_parent"
+            android:background="@android:color/transparent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/button_drawable"
+        android:layout_marginHorizontal="@dimen/large_horizontal_margin"
+        android:layout_marginVertical="@dimen/large_horizontal_margin"
+        android:id="@+id/confirm_button"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:text="@string/details_bottom_sheet_save_button"
+        android:textAllCaps="false"
+        />
+
+</LinearLayout>

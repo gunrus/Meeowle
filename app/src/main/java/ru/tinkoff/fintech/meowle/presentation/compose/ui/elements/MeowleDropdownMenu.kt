@@ -14,6 +14,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.ListItem
 import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MenuDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -50,7 +51,9 @@ fun MeowleDropdownMenu(
         expanded = expanded,
         onExpandedChange = {
             expanded = !expanded
-        }
+        },
+        modifier = Modifier
+            .background(MaterialTheme.colorScheme.surfaceDim)
     ) {
         val title = when (selectedOption) {
             is GenderOption -> stringResource(R.string.drop_down_menu_gender_title)
@@ -89,7 +92,7 @@ fun MeowleDropdownMenu(
                 )
             },
             colors = ListItemDefaults.colors(
-                containerColor = MaterialTheme.colorScheme.surfaceVariant
+                containerColor = MaterialTheme.colorScheme.surfaceBright
             ),
             modifier = Modifier
                 .menuAnchor()
@@ -99,7 +102,7 @@ fun MeowleDropdownMenu(
             expanded = expanded,
             onDismissRequest = { expanded = false },
             modifier = Modifier
-                .background(MaterialTheme.colorScheme.surfaceVariant)
+                .background(MaterialTheme.colorScheme.surfaceBright)
         ) {
             val options: List<MenuOption>  = when (selectedOption) {
                 is GenderOption -> GenderOption.entries
@@ -108,6 +111,11 @@ fun MeowleDropdownMenu(
             }
 
             options.forEach { option ->
+                val background = if (option == selectedOption) {
+                    MaterialTheme.colorScheme.surfaceDim
+                } else {
+                    MaterialTheme.colorScheme.surfaceBright
+                }
                 DropdownMenuItem(
                     leadingIcon = {
                         Icon(
@@ -121,7 +129,9 @@ fun MeowleDropdownMenu(
                     onClick = {
                         onOptionSelected(option)
                         expanded = false
-                    }
+                    },
+                    modifier = Modifier
+                        .background(background)
                 )
             }
         }

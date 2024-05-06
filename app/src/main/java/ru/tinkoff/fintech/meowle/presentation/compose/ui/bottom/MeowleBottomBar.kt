@@ -55,10 +55,12 @@ fun MeowleBottomBar(
                         }
                     },
                     label = {
-                        Text(
-                            text = stringResource(destination.title),
-                            style = MaterialTheme.typography.labelSmall,
-                        )
+                        if (isSelected) {
+                            Text(
+                                text = stringResource(destination.title),
+                                style = MaterialTheme.typography.labelSmall,
+                            )
+                        }
                     },
                 )
             }

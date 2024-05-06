@@ -31,7 +31,7 @@ fun PawBox(
         Icon(
             imageVector = ImageVector.vectorResource(R.drawable.paw),
             contentDescription = stringResource(R.string.cat_paw_content_description),
-            tint = MaterialTheme.colorScheme.surfaceVariant,
+            tint = MaterialTheme.colorScheme.surfaceDim,
             modifier = Modifier
                 .align(Alignment.BottomEnd)
                 .padding(MaterialTheme.spacing.large)
@@ -45,7 +45,17 @@ fun PawBox(
     showBackground = true,
     uiMode = Configuration.UI_MODE_NIGHT_YES
 )
-private fun MeowleBottomBarPreview() {
+private fun MeowleBottomBarDarkPreview() {
+    MeowleTheme {
+        PawBox {  }
+    }
+}
+
+@Composable
+@Preview(
+    showBackground = true
+)
+private fun MeowleBottomBarLightPreview() {
     MeowleTheme {
         PawBox {  }
     }

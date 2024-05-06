@@ -15,3 +15,9 @@ buildscript {
         google()
     }
 }
+
+tasks.create<Delete>("clean") {
+    delete {
+        getLayout().buildDirectory
+    }
+}

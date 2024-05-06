@@ -42,7 +42,7 @@ fun AddCatSnackbar(
                     )
                 }
             },
-            containerColor = MaterialTheme.colorScheme.surfaceVariant,
+            containerColor = MaterialTheme.colorScheme.surfaceDim,
             modifier = Modifier
                 .padding(MaterialTheme.spacing.small)
                 .padding(WindowInsets.ime.asPaddingValues()),
@@ -50,7 +50,7 @@ fun AddCatSnackbar(
             Text(
                 text = message,
                 style = MaterialTheme.typography.bodyMedium,
-                color = Color.White
+                color = MaterialTheme.colorScheme.onSurface
             )
         }
     }

@@ -14,6 +14,7 @@ import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material.icons.filled.FavoriteBorder
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -50,6 +51,9 @@ fun CatDetailsCard(
 ) {
     Card(
         shape = MaterialTheme.shapes.medium,
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceDim
+        ),
         modifier = modifier.fillMaxWidth()
     ) {
         Row(
@@ -68,6 +72,7 @@ fun CatDetailsCard(
                 Text(
                     text = "${cat.name}, ",
                     style = MaterialTheme.typography.titleLarge,
+                    color = MaterialTheme.colorScheme.onSurface
                 )
                 CatGenderIcon(gender = cat.gender)
             }
@@ -84,6 +89,7 @@ fun CatDetailsCard(
                 Icon(
                     imageVector = favouriteImageVector,
                     contentDescription = "",
+                    tint = MaterialTheme.colorScheme.onSurface
                 )
             }
 
@@ -128,6 +134,7 @@ fun CatDetailsCard(
                     style = MaterialTheme.typography.titleSmall,
                     maxLines = 2,
                     overflow = TextOverflow.Ellipsis,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
                 Spacer(
                     modifier = Modifier
@@ -156,8 +163,32 @@ fun CatDetailsCard(
 }
 
 @Composable
-@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-fun NewCatCardPreview() {
+@Preview(uiMode = Configuration.UI_MODE_NIGHT_YES, showBackground = true)
+private fun NewCatCardDarkPreview() {
+    val cat = Cat(
+        id = 1,
+        name = "Мурзик",
+        description = "AaaaaaaaaaaaAaaaaaaaaaaaAaaaaaaaaaaaAaaaaaaaaaaaAaaaaaaaaaaaAaaaaaaaaaaaAaaaaaaaaaaaAaaaaaaaaaaa",
+        gender = Gender.UNISEX,
+        likes = 100,
+        dislikes = 100,
+    )
+    MeowleTheme {
+        CatDetailsCard(
+            cat = cat,
+            catAvatarUrl = null,
+            isVoted = null,
+            onVote = {},
+            isFavorite = true,
+            onFavoriteClick = {},
+            onEditButtonClicked = {}
+        )
+    }
+}
+
+@Composable
+@Preview(showBackground = true)
+private fun NewCatCardLightPreview() {
     val cat = Cat(
         id = 1,
         name = "Мурзик",

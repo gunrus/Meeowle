@@ -4,6 +4,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -16,6 +17,7 @@ import coil.compose.SubcomposeAsyncImage
 import coil.request.ImageRequest
 import ru.tinkoff.fintech.meowle.R
 import ru.tinkoff.fintech.meowle.presentation.compose.ui.screens.shimmerBrush
+import ru.tinkoff.fintech.meowle.presentation.compose.ui.theme.spacing
 
 /**
  * @author Ruslan Ganeev
@@ -39,15 +41,16 @@ fun LoadingCatPhoto(
         },
         error = {
             Image(
-                painter = painterResource(id = R.drawable.cat),
+                painter = painterResource(id = R.drawable.sleepy_cat),
                 contentDescription = stringResource(R.string.favourites_cat_photo_description),
                 modifier = Modifier
                     .clip(MaterialTheme.shapes.large)
+                    .padding(MaterialTheme.spacing.large)
             )
         },
         contentScale = ContentScale.Crop,
         modifier = modifier
             .fillMaxSize()
-            .background(MaterialTheme.colorScheme.surfaceVariant)
+            .background(MaterialTheme.colorScheme.surfaceDim)
     )
 }

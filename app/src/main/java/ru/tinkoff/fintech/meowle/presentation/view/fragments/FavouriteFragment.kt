@@ -13,6 +13,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.tabs.TabLayout
@@ -37,7 +38,7 @@ class FavouriteFragment : Fragment() {
             throw exception
         } else {
             // In portrait
-            return inflater.inflate(R.layout.rating_fragment, container, false)
+            return inflater.inflate(R.layout.favorite_fragment, container, false)
         }
     }
 
@@ -52,8 +53,8 @@ class FavouriteFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val title = view.findViewById<TextView>(R.id.tw_rating_title)
-        title.text = resources.getString(R.string.favourites_title)
+//        val title = view.findViewById<TextView>(R.id.tw_rating_title)
+//        title.text = resources.getString(R.string.favourites_title)
 
         uploadFavourites()
         initViewModel()
@@ -79,14 +80,20 @@ class FavouriteFragment : Fragment() {
                 }
             }
         }
+
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                favouritesViewModel.isCatsLoaded.collect {
+                    favouritesViewModel.loadPhotos()
+                }
+            }
+        }
     }
 
     private fun setUpRecycler(view : View) {
 
-        val tabs = view.findViewById<TabLayout>(R.id.tab_layout)
-        tabs.visibility = View.GONE
         val rvPersonList = view.findViewById<RecyclerView>(R.id.rv_cats_list)
-        rvPersonList.layoutManager = LinearLayoutManager(context)
+        rvPersonList.layoutManager = GridLayoutManager(context,2)
 
         adapter = FavoritesCatsAdapter()
         rvPersonList.adapter = adapter

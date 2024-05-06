@@ -15,6 +15,9 @@ import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.drawOutline
 import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.toArgb
+import androidx.compose.ui.semantics.SemanticsPropertyKey
+import androidx.compose.ui.semantics.SemanticsPropertyReceiver
+import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import ru.tinkoff.fintech.meowle.presentation.compose.ui.theme.Black25
@@ -91,4 +94,11 @@ fun Modifier.dropShadow(
 
 fun Modifier.mirror(): Modifier {
     return this.scale(scaleX = -1f, scaleY = 1f)
+}
+
+val LazyListItemPosition = SemanticsPropertyKey<Int>("LazyListItemPosition")
+var SemanticsPropertyReceiver.lazyListItemPosition by LazyListItemPosition
+
+fun Modifier.lazyListItemPosition(position: Int): Modifier {
+    return semantics { lazyListItemPosition = position }
 }

@@ -53,7 +53,7 @@ fun VoteElement(
             enabled = !isVoted,
             colors = IconButtonDefaults.iconButtonColors(
                 contentColor = MaterialTheme.colorScheme.onPrimary,
-                disabledContentColor = MaterialTheme.colorScheme.onSecondary
+                disabledContentColor = MaterialTheme.colorScheme.primary
             )
         ) {
             Icon(
@@ -65,7 +65,8 @@ fun VoteElement(
         }
         Text(
             text = votes.toString(),
-            style = MaterialTheme.typography.titleLarge
+            style = MaterialTheme.typography.titleLarge,
+            color = MaterialTheme.colorScheme.onSurface
         )
     }
 }
@@ -118,7 +119,21 @@ fun Votes(
 
 @Composable
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-fun VoteElementPreview() {
+private fun VoteElementDarkPreview() {
+    MeowleTheme {
+        VoteElement(
+            votes = 100,
+            isLike = true,
+            isVoted = false
+        ) {
+
+        }
+    }
+}
+
+@Composable
+@Preview
+fun VoteElementLightPreview() {
     MeowleTheme {
         VoteElement(
             votes = 100,
@@ -132,7 +147,21 @@ fun VoteElementPreview() {
 
 @Composable
 @Preview(uiMode = Configuration.UI_MODE_NIGHT_YES)
-fun VotesPreview() {
+private fun VotesDarkPreview() {
+    MeowleTheme {
+        Votes(
+            likes = 100,
+            dislikes = 100,
+            isVoted = false
+        ) {
+
+        }
+    }
+}
+
+@Composable
+@Preview
+private fun VotesLightPreview() {
     MeowleTheme {
         Votes(
             likes = 100,

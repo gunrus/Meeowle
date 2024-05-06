@@ -30,49 +30,6 @@
             />
 
 
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/sw_view_mode"
-            android:layout_marginHorizontal="25dp"
-            android:text="@string/settings_list_item_compose_headline"
-            android:checked="@{viewModel.state.isCompose}"
-            android:onClick="@{() -> viewModel.onComposeSwitchClicked()}"
-            android:textColor="@color/text_color"
-            android:enabled="false"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tw_settings_title"
-            />
-
-        <com.google.android.material.switchmaterial.SwitchMaterial
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/sw_any"
-            android:layout_marginHorizontal="25dp"
-            android:enabled="false"
-            android:text="Меня нельзя тыкнуть"
-            android:textColor="@color/text_color"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sw_view_mode"
-            />
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="50dp"
-            android:layout_marginHorizontal="50dp"
-            android:layout_marginTop="50dp"
-            android:id="@+id/add_button"
-
-            app:layout_constraintTop_toBottomOf="@id/sw_any"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-
-            android:text="@string/btn_confirm_settings"
-            android:onClick="@{() -> viewModel.applySettings()}"
-            android:textAllCaps="false"
-            />
-
-
         <Button
             android:layout_width="0dp"
             android:layout_height="50dp"
@@ -80,13 +37,193 @@
             android:layout_marginVertical="10dp"
             android:id="@+id/logout_btn"
 
-            app:layout_constraintTop_toBottomOf="@id/add_button"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             android:onClick="@{() -> viewModel.logout()}"
-            android:text="@{@string/btn_logout + ' ' + viewModel.state.name}"
+            android:text="@string/settings_logout_button"
             android:textAllCaps="false"
             />
 
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cw_compose"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="@dimen/default_maxi_margin"
+            android:layout_marginTop="@dimen/default_maxi_margin"
+            app:cardElevation="2dp"
+            app:cardCornerRadius="@dimen/tw_radius"
+            android:background="@color/card_background"
+            app:strokeColor="@color/card_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tw_settings_title">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_marginVertical="@dimen/default_mini_margin"
+                android:layout_marginHorizontal="@dimen/default_medium_margin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tw_header_compose"
+                    android:text="@string/settings_list_item_compose_headline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_size_name"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/tw_desc_compose"
+                    />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tw_desc_compose"
+                    android:text="@string/settings_list_item_compose_supporting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/text_size_desc"
+                    app:layout_constraintTop_toBottomOf="@id/tw_header_compose"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sw_view_mode"
+                    android:checked="@{viewModel.state.isCompose}"
+                    android:onClick="@{() -> viewModel.onComposeSwitchClicked()}"
+                    android:textColor="@color/text_color"
+                    android:enabled="true"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cw_inactive"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="@dimen/default_maxi_margin"
+            android:layout_marginVertical="@dimen/default_medium_margin"
+            app:cardElevation="2dp"
+            app:cardCornerRadius="@dimen/tw_radius"
+            android:background="@color/card_background"
+            app:strokeColor="@color/card_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cw_compose">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_marginVertical="@dimen/default_mini_margin"
+                android:layout_marginHorizontal="@dimen/default_medium_margin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tw_header_sw"
+                    android:text="@string/settings_list_item_inactive_headline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_size_name"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/tw_desc_sw"
+                    />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tw_desc_sw"
+                    android:text="@string/settings_list_item_inactive_supporting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/tw_header_sw"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/sw_view"
+                    android:textColor="@color/text_color"
+                    android:enabled="false"
+                    android:textSize="@dimen/text_size_desc"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cw_change_name"
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginHorizontal="@dimen/default_maxi_margin"
+            android:layout_marginVertical="@dimen/default_medium_margin"
+            app:cardElevation="2dp"
+            app:cardCornerRadius="@dimen/tw_radius"
+            android:background="@color/card_background"
+            app:strokeColor="@color/card_background"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/cw_inactive">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_marginVertical="@dimen/default_mini_margin"
+                android:layout_marginHorizontal="@dimen/default_medium_margin"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tw_header_change_name"
+                    android:text="@string/settings_list_item_name_headline"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_size_name"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/tw_desc_name"
+                    />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/tw_desc_name"
+                    android:text="@{viewModel.state.name}"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintTop_toBottomOf="@id/tw_header_change_name"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:layout_width="40dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/iw_edit_name"
+                    app:srcCompat="@drawable/ic_edit"
+                    android:tint="@color/text_color"
+                    android:textColor="@color/text_color"
+                    android:enabled="false"
+                    android:onClick="@{() -> viewModel.onNameClicked()}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

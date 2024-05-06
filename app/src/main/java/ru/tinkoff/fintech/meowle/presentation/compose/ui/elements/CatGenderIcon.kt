@@ -1,6 +1,7 @@
 package ru.tinkoff.fintech.meowle.presentation.compose.ui.elements
 
 import androidx.compose.material3.Icon
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
@@ -33,5 +34,6 @@ fun CatGenderIcon(gender: Gender) {
     Icon(
         painter = painter,
         contentDescription = contentDescription,
+        tint = MaterialTheme.colorScheme.onSurface
     )
 }

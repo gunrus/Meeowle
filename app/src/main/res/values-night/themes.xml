@@ -3,7 +3,7 @@
 
     <style name="Theme.Meowle" parent="Theme.Material3.Dark.NoActionBar">
         <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
-
+        <item name="fontFamily">@font/tinkoff_sans_regular</item>
     </style>
 
 <style name="circleImageView" parent="">

@@ -19,7 +19,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "io.qameta.allure.android.runners.AllureAndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -124,7 +124,18 @@ dependencies {
     // Test
     testImplementation(libs.junit)
     androidTestImplementation(libs.junit)
+    androidTestImplementation(libs.junit.ext.ktx)
+    androidTestImplementation(libs.uiautomator)
     androidTestImplementation(libs.compose.ui.test.junit)
-    androidTestImplementation(libs.junit.ext)
     androidTestImplementation(libs.espresso.core)
+    androidTestImplementation(libs.kaspresso)
+    androidTestImplementation(libs.kaspresso.allure)
+    androidTestImplementation(libs.kaspresso.compose)
+    androidTestImplementation(libs.allure.kotlin.model)
+    androidTestImplementation(libs.allure.kotlin.commons)
+    androidTestImplementation(libs.allure.kotlin.junit4)
+    androidTestImplementation(libs.allure.kotlin.android)
+    androidTestImplementation(libs.wiremock)
+    androidTestImplementation(libs.compose.testing.junit4)
+    debugImplementation(libs.compose.testing.manifest)
 }

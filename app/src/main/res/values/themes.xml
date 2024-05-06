@@ -3,6 +3,7 @@
 
     <style name="Theme.Meowle"  parent="Theme.Material3.Light.NoActionBar">
         <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
+        <item name="fontFamily">@font/tinkoff_sans_regular</item>
     </style>
 
     <style name="circleImageView" parent="">
@@ -10,6 +11,25 @@
         <item name="cornerSize">50%</item>
     </style>
 
+    <style name="circleImageView_2" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">15%</item>
+    </style>
+
+    <style name="circleImageView_3" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+
+    <style name="Outline" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="shapeAppearanceOverlay">@style/ShapeAppearanceOverlay.MyApp.TextInputLayout.Rounded</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.MyApp.TextInputLayout.Rounded" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">@dimen/tw_radius</item>
+    </style>
 
     <style name="MineCustomTabText" parent="TextAppearance.Design.Tab">
         <item name="android:textSize">9sp</item>
@@ -32,5 +52,21 @@
     <style name="ThemeOverlay.Material3.BottomNavigationView" parent="">
         <item name="colorPrimary">@color/background</item>
         <item name="colorOnPrimary">@color/text_color</item>
+    </style>
+
+    <style name="DialogSheetAnimation">
+        <item name="android:windowEnterAnimation">@anim/slide_in_bottom_sheet</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_bottom_sheet</item>
+    </style>
+
+    <style name="AppBottomSheetDialogTheme"
+        parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/AppModalStyle</item>
+        <item name="android:color">@color/background</item>
+    </style>
+
+    <style name="AppModalStyle"
+        parent="Widget.Design.BottomSheet.Modal">
+        <item name="android:background">@drawable/dialog_background</item>
     </style>
 </resources>

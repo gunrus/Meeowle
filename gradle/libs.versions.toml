@@ -23,9 +23,14 @@ room = "2.6.1"
 hilt = "2.50"
 hiltCompiler = "1.2.0"
 coil = "2.5.0"
+
 junit = "4.13.2"
 junitExt = "1.1.5"
+uiautomator = "2.3.0"
 espresso = "3.5.1"
+kaspresso = "1.5.3"
+allure = "2.4.0"
+wiremock = "2.27.2"
 
 [libraries]
 androidx-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "ktx" }
@@ -72,8 +77,19 @@ hilt-compiler-android = { group = "com.google.dagger", name = "hilt-android-comp
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 
 junit = { group = "junit", name = "junit", version.ref = "junit" }
-junit-ext = { group = "androidx.test.ext", name = "junit", version.ref = "junitExt" }
+junit-ext-ktx = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "junitExt" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
+uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "uiautomator" }
+kaspresso = { group = "com.kaspersky.android-components", name = "kaspresso", version.ref = "kaspresso" }
+kaspresso-allure = { group = "com.kaspersky.android-components", name = "kaspresso-allure-support", version.ref = "kaspresso" }
+kaspresso-compose = { group = "com.kaspersky.android-components", name = "kaspresso-compose-support", version.ref = "kaspresso" }
+allure-kotlin-model = { group = "io.qameta.allure", name = "allure-kotlin-model", version.ref = "allure" }
+allure-kotlin-commons = { group = "io.qameta.allure", name = "allure-kotlin-commons", version.ref = "allure" }
+allure-kotlin-junit4 = { group = "io.qameta.allure", name = "allure-kotlin-junit4", version.ref = "allure" }
+allure-kotlin-android = { group = "io.qameta.allure", name = "allure-kotlin-android", version.ref = "allure" }
+wiremock = { group = "com.github.tomakehurst", name = "wiremock-standalone", version.ref = "wiremock" }
+compose-testing-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4", version.ref = "compose" }
+compose-testing-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref = "compose" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }

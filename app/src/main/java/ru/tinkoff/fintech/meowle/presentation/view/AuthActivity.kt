@@ -22,6 +22,8 @@ import ru.tinkoff.fintech.meowle.R
 import ru.tinkoff.fintech.meowle.databinding.ActivityAuthBinding
 import ru.tinkoff.fintech.meowle.presentation.MainActivity
 import ru.tinkoff.fintech.meowle.presentation.shared.auth.AuthViewModel
+import kotlin.math.PI
+import kotlin.random.Random
 
 /**
  * @author Ruslan Ganeev
@@ -39,6 +41,17 @@ class AuthActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         binding.viewModel = viewModel
         viewModel.load()
+
+        val chance = Random.nextInt(0, 99)
+
+        if (chance < 2) {
+            binding.submitButton.pivotX = 0f
+            binding.submitButton.rotation = 3f
+            val submitButtonWidth = windowManager.defaultDisplay.width - (resources.getDimension(R.dimen.medium_horizontal_margin) * 2)
+            val distance = ((PI * submitButtonWidth)/ 180) * binding.submitButton.rotation
+            binding.sleepyCat.translationY = (binding.sleepyCat.translationY + distance).toFloat()
+            binding.sleepyCat.rotation = 3f
+        }
 
         lifecycleScope.launch {
             viewModel.authState.collect { auth ->

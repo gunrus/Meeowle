@@ -39,7 +39,7 @@ fun SettingsBottomSheet(
     ModalBottomSheet(
         onDismissRequest = onClose,
         sheetState = state,
-        containerColor = MaterialTheme.colorScheme.surfaceVariant
+        containerColor = MaterialTheme.colorScheme.surfaceDim
     ) {
         SettingsBottomSheetContent(
             userName = userName,
@@ -69,6 +69,7 @@ private fun SettingsBottomSheetContent(
         Text(
             text = stringResource(R.string.settings_list_item_name_headline),
             style = MaterialTheme.typography.headlineLarge,
+            color = MaterialTheme.colorScheme.onSurface,
             modifier = Modifier
                 .padding(MaterialTheme.spacing.medium)
         )

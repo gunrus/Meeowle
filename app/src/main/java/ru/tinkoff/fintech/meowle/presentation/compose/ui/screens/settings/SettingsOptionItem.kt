@@ -7,6 +7,8 @@ import androidx.compose.material3.ListItem
 import androidx.compose.material3.ListItemDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchColors
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -68,7 +70,7 @@ fun SettingsOptionItem(
             },
             trailingContent = iconContent,
             colors = ListItemDefaults.colors(
-                containerColor = MaterialTheme.colorScheme.surfaceVariant
+                containerColor = MaterialTheme.colorScheme.surfaceBright
             )
         )
     }
@@ -79,7 +81,7 @@ fun SettingsOptionItem(
     showBackground = true
 )
 @Composable
-private fun SettingsSwitcherPreview() {
+private fun SettingsSwitcherDarkPreview() {
     MeowleTheme {
         SettingsOptionItem(
             headlineText = stringResource(R.string.settings_list_item_compose_headline),
@@ -88,6 +90,27 @@ private fun SettingsSwitcherPreview() {
             Switch(
                 checked = false,
                 onCheckedChange = {  }
+            )
+        }
+    }
+}
+
+@Preview(
+    showBackground = true
+)
+@Composable
+private fun SettingsSwitcherLightPreview() {
+    MeowleTheme {
+        SettingsOptionItem(
+            headlineText = stringResource(R.string.settings_list_item_compose_headline),
+            supportingText = stringResource(R.string.settings_list_item_compose_supporting),
+        ) {
+            Switch(
+                checked = false,
+                onCheckedChange = {  },
+                colors = SwitchDefaults.colors(
+
+                )
             )
         }
     }
