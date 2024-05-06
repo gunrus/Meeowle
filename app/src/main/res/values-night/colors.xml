@@ -2,6 +2,15 @@
 <resources>
     <color name="main_t">#FFFFFF</color>
     <color name="secondary_t">#FF000000</color>
-    <color name="text_color">#FFFFFFFF</color>
-    <color name="background">@android:color/background_dark</color>
+    <color name="text_color">#FFFFFFDE</color>
+    <color name="background">#241D24</color>
+
+    <color name="card_background">#2D252D</color>
+    <color name="rating_background">#1D181D</color>
+
+
+    <color name="card_cat_title">#241D24</color>
+    <color name="head_text_color">#FFFFFF</color>
+    <color name="button_color_main">#FFFFFF</color>
+
 </resources>

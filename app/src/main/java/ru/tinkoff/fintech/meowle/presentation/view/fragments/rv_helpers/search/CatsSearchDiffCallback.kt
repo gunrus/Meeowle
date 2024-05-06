@@ -1,21 +1,14 @@
 package ru.tinkoff.fintech.meowle.presentation.view.fragments.rv_helpers.search
 
 import androidx.recyclerview.widget.DiffUtil
+import ru.tinkoff.fintech.meowle.domain.cat.Cat
 
-class CatsSearchDiffCallback : DiffUtil.ItemCallback<SearchCatListItem>() {
-    override fun areItemsTheSame(oldItem: SearchCatListItem, newItem: SearchCatListItem): Boolean {
-        return when (oldItem is DataItemSearch && newItem is DataItemSearch) {
-            true -> {
-                oldItem.catItem.id == newItem.catItem.id
-            }
-
-            false -> {
-                (oldItem as DividerItemSearch).letter == (newItem as DividerItemSearch).letter
-            }
-        }
+class CatsSearchDiffCallback : DiffUtil.ItemCallback<Cat>() {
+    override fun areItemsTheSame(oldItem: Cat, newItem: Cat): Boolean {
+        return oldItem.id == newItem.id
     }
 
-    override fun areContentsTheSame(oldItem: SearchCatListItem, newItem: SearchCatListItem): Boolean {
+    override fun areContentsTheSame(oldItem: Cat, newItem: Cat): Boolean {
         return oldItem == newItem
     }
 }

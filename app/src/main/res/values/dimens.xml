@@ -1,6 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="default_horizontal_margin">25dp</dimen>
+    <dimen name="medium_horizontal_margin">32dp</dimen>
     <dimen name="large_horizontal_margin">50dp</dimen>
     <dimen name="splash_screen_icon_size">48dp</dimen>
+
+
+    <dimen name="dialog_radius">45dp</dimen>
+    <dimen name="tw_radius">8dp</dimen>
+
+    <dimen name="left_padding_card">15dp</dimen>
+    <dimen name="default_minimum_padding">4dp</dimen>
+    <dimen name="default_maxi_margin">25dp</dimen>
+    <dimen name="default_margin">15dp</dimen>
+    <dimen name="default_medium_margin">10dp</dimen>
+    <dimen name="default_mini_margin">5dp</dimen>
+
+
+
+    <dimen name="text_size_title">30sp</dimen>
+    <dimen name="text_size_name">20sp</dimen>
+    <dimen name="text_size_desc">15sp</dimen>
 </resources>

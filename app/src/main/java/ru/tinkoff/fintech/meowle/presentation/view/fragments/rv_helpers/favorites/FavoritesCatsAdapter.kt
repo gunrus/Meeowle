@@ -16,7 +16,7 @@ import ru.tinkoff.fintech.meowle.presentation.shared.favourites.FavouriteCat
 class FavoritesCatsAdapter : ListAdapter<FavouriteCat, CatFavoritesListViewHolder>(CatsFavouriteItemDiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatFavoritesListViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.cat_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.cat_favourite_item_redesign, parent, false)
         return CatFavoritesListViewHolder(view)
     }
     var onCatItemClicked: ((Cat) -> Unit)? = null
@@ -32,19 +32,11 @@ class FavoritesCatsAdapter : ListAdapter<FavouriteCat, CatFavoritesListViewHolde
         }
 
         holder.twName.text = favouriteCat.cat.name
-        holder.tw_likes.text = "\uD83D\uDC4D ${favouriteCat.cat.likes}"
-        holder.tw_dislikes.text = "\uD83D\uDC4E ${favouriteCat.cat.dislikes}"
-
-        when (favouriteCat.cat.gender) {
-            Gender.MALE -> holder.lb_gender.setImageDrawable(ResourcesCompat.getDrawable(res, R.drawable.ic_male,null ))
-            Gender.FEMALE -> holder.lb_gender.setImageDrawable(ResourcesCompat.getDrawable(res, R.drawable.ic_female,null ))
-            Gender.UNISEX -> holder.lb_gender.setImageDrawable(ResourcesCompat.getDrawable(res, R.drawable.ic_unknown_gender,null ))
-        }
 
         Glide.with(holder.itemView.context)
             .load(favouriteCat.catPhoto)
-            .placeholder(R.drawable.cat)
-            .error(R.drawable.cat)
+            .placeholder(R.drawable.sleepy_cat)
+            .error(R.drawable.sleepy_cat)
             .sizeMultiplier(0.5f)
             .apply(
                 RequestOptions()

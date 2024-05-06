@@ -65,7 +65,7 @@
     <string name="details_photos_empty_description">У котика пока нет фотографий</string>
     <string name="details_fab_content_description">Добавить фотографию котика</string>
     <string name="details_bottom_sheet_title">Описание котика</string>
-    <string name="details_bottom_sheet_hint">Поименять описание котика</string>
+    <string name="details_bottom_sheet_hint">Поменять описание котика</string>
     <string name="details_bottom_sheet_save_button">Сохранить</string>
 
     <string name="add_cat">Дабавить кота в базу котиков</string>

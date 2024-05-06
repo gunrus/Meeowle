@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.ListAdapter
 import ru.tinkoff.fintech.meowle.R
 import ru.tinkoff.fintech.meowle.domain.cat.Cat
@@ -11,7 +12,7 @@ import ru.tinkoff.fintech.meowle.domain.cat.Vote
 
 class CatListAdapter : ListAdapter<Cat, CatListViewHolder>(CatsItemDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CatListViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.cat_rating_item, parent, false)
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.cat_item_rating_redesign, parent, false)
         return CatListViewHolder(view)    }
 
     var votePosition = Vote.LIKES
@@ -20,22 +21,45 @@ class CatListAdapter : ListAdapter<Cat, CatListViewHolder>(CatsItemDiffCallback(
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CatListViewHolder, position: Int) {
         val catDetails = getItem(position)
-        holder.itemView.setOnClickListener { onCatItemClickListener?.invoke(catDetails) }
+        holder.itemView.setOnClickListener {
+            onCatItemClickListener?.invoke(catDetails)
+        }
 
         holder.twName.text = catDetails.name
+        val res = holder.itemView.context.resources
 
-        holder.twRatingPosition.text = "${position + 1}."
 
         when (votePosition) {
             Vote.LIKES -> {
-                holder.tw_likes.text = "\uD83D\uDC4D ${catDetails.likes}"
-                holder.tw_dislikes.visibility = View.GONE
-                holder.tw_likes.visibility = View.VISIBLE
+                holder.tw_count.text = catDetails.likes.toString()
+                holder.ib_likes.setImageDrawable(ResourcesCompat.getDrawable(res, R.drawable.ic_like, null))
+                when (position) {
+                    0 -> {
+                        with(holder.iv_crown) {
+                            visibility = View.VISIBLE
+                            setImageDrawable(ResourcesCompat.getDrawable(res, R.drawable.crown_gold,null ))
+                        }
+                    }
+                    1 -> {
+                        with(holder.iv_crown) {
+                            visibility = View.VISIBLE
+                            setImageDrawable(ResourcesCompat.getDrawable(res, R.drawable.crown_silver, null))
+                        }
+                    }
+                    2 -> {
+                        with(holder.iv_crown) {
+                            visibility = View.VISIBLE
+                            setImageDrawable(ResourcesCompat.getDrawable(res, R.drawable.crown_bronze, null))
+                        }
+                    }
+                    else -> holder.iv_crown.visibility = View.GONE
+
+                }
             }
             Vote.DISLIKES -> {
-                holder.tw_dislikes.text = "\uD83D\uDC4E ${catDetails.dislikes}"
-                holder.tw_likes.visibility = View.GONE
-                holder.tw_dislikes.visibility = View.VISIBLE
+                holder.tw_count.text = catDetails.dislikes.toString()
+                holder.ib_likes.setImageDrawable(ResourcesCompat.getDrawable(res, R.drawable.ic_dislike, null))
+                holder.iv_crown.visibility = View.GONE
             }
         }
     }
