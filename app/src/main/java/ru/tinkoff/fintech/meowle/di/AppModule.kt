@@ -14,6 +14,8 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 import retrofit2.create
 import ru.tinkoff.fintech.meowle.data.api.CatsApi
 import ru.tinkoff.fintech.meowle.data.database.CatsDatabase
+import ru.tinkoff.fintech.meowle.domain.repository.SettingsRepository
+import javax.inject.Inject
 import javax.inject.Singleton
 
 /**
@@ -27,7 +29,9 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideCatsApi(): CatsApi {
+    fun provideCatsApi(
+        settingsRepository: SettingsRepository
+    ): CatsApi {
         val okHttpClient = OkHttpClient.Builder()
             .addInterceptor(
                 HttpLoggingInterceptor()
@@ -39,8 +43,10 @@ object AppModule {
             .create()
             .withNullSerialization()
 
+        val url = settingsRepository.getBaseUrl() ?: BASE_URL
+
         return Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(url)
             .client(okHttpClient)
             .addConverterFactory(moshiConverterFactory)
             .build()

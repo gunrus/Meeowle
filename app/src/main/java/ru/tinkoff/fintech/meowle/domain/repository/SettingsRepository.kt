@@ -19,5 +19,5 @@ interface SettingsRepository {
 
     suspend fun setLaunchMode(mode: Mode)
 
-    suspend fun getBaseUrl(): String
+    fun getBaseUrl(): String?
 }

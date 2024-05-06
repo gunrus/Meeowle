@@ -14,6 +14,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -58,6 +59,7 @@ fun SearchCatCard(
             .clickable {
                 onCatClick(cat)
             }
+            .testTag("catCard")
     ) {
         Row(
             verticalAlignment = Alignment.CenterVertically,
@@ -75,7 +77,9 @@ fun SearchCatCard(
                 ) {
                     Text(
                         text = "${cat.name}, ",
-                        style = MaterialTheme.typography.titleLarge
+                        style = MaterialTheme.typography.titleLarge,
+                        modifier = Modifier
+                            .testTag("catName")
                     )
                     CatGenderIcon(
                         gender = cat.gender

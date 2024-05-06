@@ -12,6 +12,8 @@ class PreferenceRule : TestRule {
             override fun evaluate() {
                 println("TestRule Before Test")
                 putAuthParam()
+                mode()
+                //putUrl()
                 base.evaluate() // our test works here
                 cleanPrefs()
                 println("TestRule After Test")
@@ -24,6 +26,22 @@ class PreferenceRule : TestRule {
             .getSharedPreferences("meowle", Context.MODE_PRIVATE)
             .edit()
             .putBoolean("auth", true)
+            .commit()
+    }
+
+    private fun putUrl() {
+        InstrumentationRegistry.getInstrumentation().targetContext
+            .getSharedPreferences("meowle", Context.MODE_PRIVATE)
+            .edit()
+            .putString("url", "http://localhost:5000")
+            .commit()
+    }
+
+    private fun mode() {
+        InstrumentationRegistry.getInstrumentation().targetContext
+            .getSharedPreferences("meowle", Context.MODE_PRIVATE)
+            .edit()
+            .putString("launch_mode", "COMPOSE")
             .commit()
     }
 

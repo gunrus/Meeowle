@@ -19,6 +19,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.text.input.ImeAction
@@ -58,7 +59,9 @@ fun SearchBar(
             ) {
                 Icon(
                     imageVector = ImageVector.vectorResource(R.drawable.tune),
-                    contentDescription = stringResource(R.string.search_tune_icon_content_description)
+                    contentDescription = stringResource(R.string.search_tune_icon_content_description),
+                    modifier = Modifier
+                        .testTag("searchOptions")
                 )
             }
         },
@@ -100,6 +103,7 @@ fun SearchBar(
         shape = MaterialTheme.shapes.medium,
         modifier = modifier
             .fillMaxWidth()
+            .testTag("search")
     )
 }
 

@@ -10,10 +10,12 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,6 +30,7 @@ import ru.tinkoff.fintech.meowle.domain.cat.Cat
 import ru.tinkoff.fintech.meowle.domain.cat.Gender
 import ru.tinkoff.fintech.meowle.presentation.compose.ui.elements.ContentPlaceholder
 import ru.tinkoff.fintech.meowle.presentation.compose.ui.elements.PawBox
+import ru.tinkoff.fintech.meowle.presentation.compose.ui.lazyListItemPosition
 import ru.tinkoff.fintech.meowle.presentation.compose.ui.theme.MeowleTheme
 import ru.tinkoff.fintech.meowle.presentation.compose.ui.theme.spacing
 import ru.tinkoff.fintech.meowle.presentation.shared.search.SearchInputsState
@@ -185,11 +188,14 @@ private fun SuccessContent(
             ),
             modifier = Modifier
                 .fillMaxWidth()
+                .testTag("searchCatsList")
         ) {
-            items(cats) {
+            itemsIndexed(cats) { index, cat ->
                 SearchCatCard(
-                    cat = it,
-                    onCatClick = onCatClick
+                    cat = cat,
+                    onCatClick = onCatClick,
+                    modifier = Modifier
+                        .lazyListItemPosition(index)
                 )
             }
         }
