@@ -12,7 +12,7 @@ class KaspressoSimpleComposeSearchScreen(
 ) : ComposeScreen<KaspressoSimpleComposeSearchScreen>(semanticsProvider) {
 
     private val search = KNode(semanticsProvider) { hasTestTag("search") }
-    private val searchOptions = KNode(semanticsProvider) {
+    private val searchOptions = onNode {
         hasTestTag("searchOptions")
         useUnmergedTree = true
     }

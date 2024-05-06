@@ -13,7 +13,7 @@ class PreferenceRule : TestRule {
                 println("TestRule Before Test")
                 putAuthParam()
                 //mode()
-                //putUrl()
+                putUrl()
                 base.evaluate() // our test works here
                 cleanPrefs()
                 println("TestRule After Test")

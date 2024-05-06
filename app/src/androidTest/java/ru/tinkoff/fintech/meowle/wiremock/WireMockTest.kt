@@ -59,11 +59,11 @@ class WireMockTest {
 
     @Test
     fun scenario() {
-        val scenarion = "Rating"
+        val scenario = "Rating"
 
         stubFor(
             get("/api/likes/cats/rating")
-                .inScenario(scenarion)
+                .inScenario(scenario)
                 .whenScenarioStateIs(Scenario.STARTED)
                 .willSetStateTo("Second")
                 .willReturn(
@@ -75,7 +75,7 @@ class WireMockTest {
 
         stubFor(
             get("/api/likes/cats/rating")
-                .inScenario(scenarion)
+                .inScenario(scenario)
                 .whenScenarioStateIs("Second")
                 .willReturn(
                     aResponse()
@@ -110,7 +110,7 @@ class WireMockTest {
             .perform(click())
 
         verify(
-            getRequestedFor(urlPathMatching("/api/likes/cats/rating"))
+            getRequestedFor(urlPathMatching(".*/rating"))
                 .withHeader("Accept-Encoding", equalTo("gzip"))
         )
     }

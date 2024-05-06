@@ -2,6 +2,7 @@ package ru.tinkoff.fintech.meowle.allure
 
 import androidx.test.ext.junit.rules.activityScenarioRule
 import io.qameta.allure.android.runners.AllureAndroidJUnit4
+import io.qameta.allure.kotlin.Allure
 import io.qameta.allure.kotlin.Allure.step
 import io.qameta.allure.kotlin.Epic
 import io.qameta.allure.kotlin.Feature
@@ -33,9 +34,7 @@ class AllureExampleTest {
     @DisplayName("Allure test")
     fun allure() {
         val search = KaspressoSearchScreen()
-        step("Ищем кота") {
-            search.findCat("Саня")
-        }
+        search.findCat("Саня")
 
         step("Проверяем список котов") {
             search.checkCatsListSize(4)

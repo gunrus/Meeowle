@@ -7,6 +7,7 @@ import io.github.kakaocup.kakao.recycler.KRecyclerItem
 import io.github.kakaocup.kakao.recycler.KRecyclerView
 import io.github.kakaocup.kakao.text.KButton
 import io.github.kakaocup.kakao.text.KTextView
+import io.qameta.allure.kotlin.Allure
 import org.hamcrest.Matcher
 import ru.tinkoff.fintech.meowle.R
 
@@ -15,19 +16,21 @@ import ru.tinkoff.fintech.meowle.R
  */
 class KaspressoSearchScreen : KScreen<KaspressoAuthScreen>() {
 
-    override val layoutId: Int? = null
+    override val layoutId: Int = R.layout.search_fragment
     override val viewClass: Class<*>? = null
 
     private val searchInput = KEditText { withId(R.id.et_search) }
-    private val searchButton = KButton { withId(com.google.android.material.R.id.text_input_start_icon) }
+
     private val catsList = KRecyclerView(
         builder = { withId(R.id.rv_search_result_list) },
         itemTypeBuilder = { itemType(::CatCard) }
     )
 
     fun findCat(catName: String) {
-        searchInput.replaceText(catName)
-        searchButton.click()
+        Allure.step("Поиск кота") {
+            searchInput.replaceText(catName)
+            searchInput.pressImeAction()
+        }
     }
 
     fun checkCatName(catName: String, position: Int) {

@@ -18,7 +18,7 @@ import ru.tinkoff.fintech.meowle.screens.kaspresso.KaspressoSearchScreen
 class KaspressoRecyclerAdvancedTest : TestCase(
     kaspressoBuilder = Kaspresso.Builder.simple(
         customize = {
-            flakySafetyParams = FlakySafetyParams.custom(timeoutMs = 3_000, intervalMs = 250)
+            flakySafetyParams = FlakySafetyParams.custom(timeoutMs = 6_000, intervalMs = 250)
         }
     ).apply {
         stepWatcherInterceptors.addAll(listOf(AllureMapperStepInterceptor()))

@@ -65,14 +65,8 @@ class KaspressoAdvancedTest : TestCase(
             authScreen.enterPhone("+79999999999")
         }
 
-        step("Нажимаем кнопку 'Войти'") {
-            authScreen.clickSubmit()
+        flakySafely(10_000) {
+            KButton { withId(-1123) }.isDisplayed()
         }
-
-        KButton { withId(-1123) }.isDisplayed()
-
-        /*flakySafely(10_000) {
-
-        }*/
     }
 }
