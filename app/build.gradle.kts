@@ -9,7 +9,7 @@ plugins {
 }
 
 android {
-    namespace = "ru.tinkoff.fintech.meowle"
+    namespace = "ru.tinkoff.fintech.demo"
     compileSdk = 34
 
     defaultConfig {
@@ -28,20 +28,16 @@ android {
     buildTypes {
         release {
             isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
         }
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
 
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = "17"
     }
 
     dataBinding {
@@ -72,14 +68,8 @@ android {
 }
 
 dependencies {
-    // View
-    implementation(libs.androidx.ktx)
-    implementation(libs.fragment.navigation)
-    implementation(libs.ui.navigation)
-    implementation(libs.flexbox)
-    implementation(libs.constraintlayout)
-    implementation(libs.glide)
-    implementation(libs.splashscreen)
+    implementation(project(":meowle"))
+    implementation(libs.kotlinx.serialization.json)
 
     // Network
     implementation(libs.retrofit)
@@ -94,35 +84,13 @@ dependencies {
     kapt(libs.hilt.compiler)
     kapt(libs.hilt.compiler.android)
 
-    // Compose
-    implementation(libs.compose.activity)
-    implementation(libs.compose.ui)
-    implementation(libs.compose.ui.graphics)
-    implementation(libs.compose.ui.tooling.preview)
-    implementation(libs.compose.material)
-    debugImplementation(libs.compose.ui.tooling)
-    debugImplementation(libs.compose.ui.test.manifest)
-    // Compose Navigation
-    implementation(libs.compose.navigation)
-    implementation(libs.compose.navigation.destinations.core)
-    ksp(libs.compose.navigation.destinations.ksp)
-
-    // Lifecycle
-    implementation(libs.lifecycle.viewmodel.compose)
-    implementation(libs.lifecycle.viewmodel.ktx)
-    implementation(libs.lifecycle.livedata.ktx)
-    implementation(libs.lifecycle.runtime.compose)
-
     // Room
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
 
-    // Coil
-    implementation(libs.coil.compose)
-
     // Test
-    testImplementation(libs.junit)
+    androidTestImplementation(project(":meowle-testing"))
     androidTestImplementation(libs.junit)
     androidTestImplementation(libs.junit.ext.ktx)
     androidTestImplementation(libs.uiautomator)
