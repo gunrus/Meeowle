@@ -15,4 +15,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "Meowle"
 include(":app")
- 
+include(":meowle")
+include(":meowle-testing")
