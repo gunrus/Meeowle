@@ -23,7 +23,7 @@
         <activity
             android:name="ru.tinkoff.fintech.meowle.presentation.view.AuthActivity"
             android:exported="true"
-            android:theme="@style/Theme.Meowle">
+            android:theme="@style/Theme.Meowle.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />

@@ -3,7 +3,7 @@
     <dimen name="default_horizontal_margin">25dp</dimen>
     <dimen name="medium_horizontal_margin">32dp</dimen>
     <dimen name="large_horizontal_margin">50dp</dimen>
-    <dimen name="splash_screen_icon_size">48dp</dimen>
+    <dimen name="splash_screen_icon_size">158dp</dimen>
 
 
     <dimen name="dialog_radius">45dp</dimen>
