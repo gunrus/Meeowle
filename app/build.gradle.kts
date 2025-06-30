@@ -90,6 +90,7 @@ dependencies {
     ksp(libs.room.compiler)
 
     // Test
+    testImplementation(libs.junit)
     androidTestImplementation(project(":meowle-testing"))
     androidTestImplementation(libs.junit)
     androidTestImplementation(libs.junit.ext.ktx)
