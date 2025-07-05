@@ -1,6 +1,7 @@
 package ru.tinkoff.fintech.meowle.testing.screens
 
 import com.kaspersky.kaspresso.testcases.core.testcontext.TestContext
+import io.github.kakaocup.kakao.text.KTextView
 import ru.tinkoff.fintech.meowle.R
 import ru.tinkoff.fintech.meowle.presentation.view.fragments.DetailsFragment
 

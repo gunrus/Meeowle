@@ -7,6 +7,8 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import ru.tinkoff.fintech.meowle.R
+import ru.tinkoff.fintech.meowle.espresso.screens.EspressoAuthScreen
+import ru.tinkoff.fintech.meowle.espresso.screens.EspressoSearchScreen
 import ru.tinkoff.fintech.meowle.presentation.view.AuthActivity
 
 /**
