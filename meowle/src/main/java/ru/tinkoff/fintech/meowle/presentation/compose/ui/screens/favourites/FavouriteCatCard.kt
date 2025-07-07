@@ -13,7 +13,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
@@ -36,15 +36,17 @@ private val CARD_HEIGHT = 180.dp
 @Composable
 fun FavouriteCatCard(
     favouriteCat: FavouriteCat,
-    onCatClicked: (Cat) -> Unit
+    modifier: Modifier = Modifier,
+    onCatClicked: (Cat) -> Unit,
 ) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .width(CARD_HEIGHT)
             .height(CARD_HEIGHT + CAT_NAME_BOX_HEIGHT / 2)
             .clickable {
                 onCatClicked(favouriteCat.cat)
             }
+            .testTag("favouriteCatCard")
     ) {
         //this.constraints
         Card(

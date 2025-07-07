@@ -25,6 +25,7 @@ android {
 dependencies {
     implementation(project(":meowle"))
 
+    implementation(libs.androidx.ktx)
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.junit)
     implementation(libs.junit.ext.ktx)

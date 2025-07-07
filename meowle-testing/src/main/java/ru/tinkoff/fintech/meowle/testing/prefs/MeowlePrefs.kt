@@ -3,6 +3,7 @@ package ru.tinkoff.fintech.meowle.testing.prefs
 import android.content.Context
 import androidx.test.platform.app.InstrumentationRegistry
 import ru.tinkoff.fintech.meowle.presentation.Mode
+import androidx.core.content.edit
 
 /**
  * @author Ruslan Ganeev
@@ -15,37 +16,22 @@ object MeowlePrefs {
         .getSharedPreferences("meowle", Context.MODE_PRIVATE)
 
     fun authorize() {
-        prefs
-            .edit()
-            .putBoolean("auth", true)
-            .apply()
+        prefs.edit { putBoolean("auth", true) }
     }
 
-    fun unauthorize() {
-        prefs
-            .edit()
-            .putBoolean("auth", false)
-            .apply()
+    fun unAuthorize() {
+        prefs.edit { putBoolean("auth", false) }
     }
 
     fun changeAppUrl(url: String = "http://localhost:5000") {
-        prefs
-            .edit()
-            .putString("url", url)
-            .apply()
+        prefs.edit { putString("url", url) }
     }
 
     fun changeUiMode(mode: Mode = Mode.VIEWS) {
-        prefs
-            .edit()
-            .putString("launch_mode", mode.name)
-            .apply()
+        prefs.edit { putString("launch_mode", mode.name) }
     }
 
     fun clear() {
-        prefs
-           .edit()
-           .clear()
-           .apply()
+        prefs.edit { clear() }
     }
 }

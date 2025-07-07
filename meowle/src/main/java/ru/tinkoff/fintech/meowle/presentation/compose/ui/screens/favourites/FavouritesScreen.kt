@@ -8,11 +8,13 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.itemsIndexed
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
@@ -28,6 +30,7 @@ import ru.tinkoff.fintech.meowle.domain.cat.Cat
 import ru.tinkoff.fintech.meowle.domain.cat.Gender
 import ru.tinkoff.fintech.meowle.presentation.compose.ui.elements.ContentPlaceholder
 import ru.tinkoff.fintech.meowle.presentation.compose.ui.elements.PawBox
+import ru.tinkoff.fintech.meowle.presentation.compose.ui.lazyListItemPosition
 import ru.tinkoff.fintech.meowle.presentation.compose.ui.theme.MeowleTheme
 import ru.tinkoff.fintech.meowle.presentation.compose.ui.theme.spacing
 import ru.tinkoff.fintech.meowle.presentation.shared.favourites.FavouriteCat
@@ -87,11 +90,14 @@ fun FavouritesList(
                     end = MaterialTheme.spacing.medium,
                     bottom = MaterialTheme.spacing.medium
                 )
+                .testTag("favouritesCatsList")
         ) {
-            items(favouriteCats) { favouriteCat ->
+            itemsIndexed(favouriteCats) { index, favouriteCat ->
                 FavouriteCatCard(
                     favouriteCat = favouriteCat,
-                    onCatClicked = onCatClicked
+                    onCatClicked = onCatClicked,
+                    modifier = Modifier
+                        .lazyListItemPosition(index)
                 )
             }
         }
